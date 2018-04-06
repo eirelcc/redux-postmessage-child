@@ -7,7 +7,7 @@ function App({ parentURL, message, onClick }) {
     return (
         <div className="App">
             <h1 className="App-title">IFRAME CONTENT</h1>
-            <div>Parent: {parentURL}</div>
+            {!!parentURL && <div>Parent: {parentURL}</div>}
             <button onClick={onClick} style={{ width: 200, height: 50 }}>
                 SEND MESSAGE
             </button>
