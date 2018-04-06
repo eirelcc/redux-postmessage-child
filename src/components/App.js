@@ -3,13 +3,14 @@ import { connect } from 'react-redux';
 import { compose, withProps } from 'recompose';
 import { actionType } from 'redux-postmessage-middleware';
 
-function App({ onClick }) {
+function App({ message, onClick }) {
     return (
         <div className="App">
             <h1 className="App-title">IFRAME CONTENT</h1>
             <button onClick={onClick} style={{ width: 200, height: 50 }}>
                 SEND MESSAGE
             </button>
+            {!!message && <p>Sent message: {message}</p>}
         </div>
     );
 }
@@ -17,7 +18,7 @@ function App({ onClick }) {
 function mapStateToProps(state, props) {
     // console.log(state);
     return {
-        message: state.message
+        message: state.message.message
     };
 }
 
@@ -27,7 +28,7 @@ const enhance = compose(
         onClick: () => {
             dispatch({
                 type: actionType('SEND_MESSAGE'),
-                data: {
+                payload: {
                     message: 'HELLO FROM IFRAME'
                 }
             });
