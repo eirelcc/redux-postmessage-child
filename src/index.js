@@ -39,7 +39,7 @@ const store = createStore(
 
 ReactDOM.render(
     <Provider store={store}>
-        <App />
+        <App parentURL={parentURL} />
     </Provider>,
     document.getElementById('root')
 );
