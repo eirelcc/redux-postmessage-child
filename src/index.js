@@ -5,13 +5,15 @@ import { createStore, applyMiddleware } from 'redux';
 
 import App from './components/App';
 import reducer from './reducers';
-import { PARENT_URL as parentURL } from './constants';
+// import { PARENT_URL as parentURL } from './constants';
+import { getURLParams } from './utils';
 
 import {
     createMessageDispatcherMiddleware,
     createMessageRecieverMiddleware
 } from 'redux-postmessage-middleware';
 
+const parentURL = getURLParams(window.location).parentURL;
 const senderURL = window.location.href;
 
 // create MessageDispatcherMiddleware for sending actions over postmessage
